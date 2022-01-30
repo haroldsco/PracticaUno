@@ -1,0 +1,149 @@
+body{
+    background-color: antiquewhite;
+    margin: 0;
+    color: black;
+    font-family: 'Supermercado One', cursive;
+}
+
+.header::after{         /* ::after hace que el contenido despues de ese elemento */
+    content: "";        /* añadir un contenedor vaacio para que funcione la superpocision */
+    height: 100vh;      /* del contenedor vacio cubre el alto del dispositivo */
+    width: 100%;        /* del contenedor vacio cubre el ancho del dispositivo*/
+    background-image: url(../img/header_bg.jpg);    /* añadir la imagen desde la url, la carpeta donde esta ../ para retroceder en las carpetas */
+    background-size: cover;     /* para poner la imagen en el maximo tamaño del dispositivo */
+    background-repeat: no-repeat;   /* para que la imagen este en el 100% y no se repita */
+    background-position: center;    /* para centrar la imagen*/
+    display: block;     /* para que la imagen se vea en el bloque */
+    filter: blur(10px); /* para distorcionar la imagen */
+    -webkit-filter: blur(10px); /* para que no existan problemas con los navegadores */
+    transition: all 1000ms;     /* agrega una transision con el tiempo en milisegundos */
+}
+
+.header:hover::after{               /* alterar el fondo */
+    filter: blur(0px);              /*quita el filtro con el hover, el cursor quita el efecto*/
+    -webkit-filter: blur(0px);      /*quita el filtro con el hover, el cursor quita el efecto */
+}
+
+.header:hover.header-content{       /* hover para que el cursor haga el efecto de filter */
+    filter: blur(2px); 
+    -webkit-filter: blur(2px);
+}
+
+.header-content{
+    position: absolute;     /* para que el contenido  no este en bloque sino uno encima del otro */
+    z-index: 1;             /* para que este adelante */
+    top: 10%;               /* para poner un margen */
+    left: 50%;              /* izquierda  */
+    margin-top: 105px;      /* cenrtrado */
+    margin-left: -145px;    /* centrado */
+    width: 300px;           /* definir el tamaño de la imagen */
+    height: 350px;          /* definir el tamaño de la imagen */
+    text-align: center;     /* centrar el texto del contenido */
+    transition: all 1000ms; /* para afectar con la misma trasicion */
+}
+
+.header-content.logo{
+    height: 300px;          /* altera el tamaño del logo */
+    width:  300px;           /* altera el tamaño del logo */
+}
+
+.header-content.title{                     /* cambiar el tamaño y fuente del titulo */
+    /* font-family: 'Oswald', sans-serif; */
+    font-family: 'Mochiy Pop P One', sans-serif;
+    font-size: 2.5rem;        /* 1rem = 16px */
+}
+
+.header-content p{                      /* organizar y posicionar el texto  */
+    line-height: 1.7;
+    margin-top: 1rem;
+    color: whitesmoke;
+}
+
+.container{                /* dar en ancho al container */
+    max-width: 960px;
+    margin: auto;
+    overflow: hidden;
+    padding: 4rem 1rem;
+}
+
+.text-center{
+    text-align: center;
+    margin: auto;
+}
+
+.grid-3{                /* dividir el contenedor en tres */
+    display: grid;      /* clase para dividir */
+    grid-template-columns: 1fr 1fr 1fr;     /* funcion para dividir en 3 */
+    grid-gap: 20px;     /* espaciado entre columna */
+}
+
+.grid-2{                /* dividir el contenedor en dos */
+    display: grid;      /* mismo proceso*/
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.about-bg-smothwhite{
+    background-color: whitesmoke;
+    color: black;
+
+}
+
+.about{
+    background-color:   rgb(53, 49, 49);
+    color: whitesmoke;
+}
+
+.services{
+    padding: 2rem 0;
+}
+
+footer{
+    padding:2.2rem;   
+}
+
+footer p{
+    margin: 0;
+}
+
+@media(max-width: 560px){           /* hacer la pagina responsive */
+    .header::after{
+        height: 50vh;
+    }
+
+    .header-content{
+        top:5%;
+        margin-top: 5px;
+    }
+
+    .header-content.logo{
+        height: 140px;
+        width:  140px;
+    }
+
+/*     .header-content h1{
+        top: 0;    
+    }
+ */
+    .header-content p{
+        /* font-size: 0; */            /* opcional para desaparecer algun elemento en el responsive */
+        display: none;
+    }
+
+    .grid-3, .grid-2{
+        grid-template-columns: 1fr;
+    }
+
+    .services{
+        padding: 1rem 1rem;
+    }
+}
+
+@media(max-height: 500px) {             /* tamaño orizontal del dispositivo */
+    .header-content p {
+        display: none;
+    }
+    .header-content {
+        top: 0;
+    }
+}
